@@ -287,7 +287,6 @@ void Target::setCompilerPath() {
 
     compilerexecname = getTriple();
     compilerexecname += "-";
-    compilerexecname += compilername;
   } else {
     if (!compilerpath.empty()) {
       compilerpath += "/";
@@ -295,10 +294,9 @@ void Target::setCompilerPath() {
     } else {
       if (!realPath(compilername.c_str(), compilerpath, ignoreCCACHE))
         compilerpath = compilername;
-
-      compilerexecname += compilername;
     }
   }
+  compilerexecname += compilername;
 }
 
 bool Target::findClangIntrinsicHeaders(std::string &path) {
